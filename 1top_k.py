@@ -7,6 +7,7 @@ nums_map = {}
 for n in nums:
     nums_map[n] = nums_map.get(n, 0) + 1
 
+print(nums_map)
 # sort it
 sorted_list = sorted(nums_map.items(), key=lambda x: x[1], reverse=True)
 
