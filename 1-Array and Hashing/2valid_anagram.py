@@ -4,6 +4,7 @@ s = "anagram"
 t = "nagaram"
 
 
+
 def isAnagram(s, t):
     letter_count = {}
     for char in s:

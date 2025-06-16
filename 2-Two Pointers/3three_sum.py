@@ -13,7 +13,7 @@ def threeSum(nums):
             continue
         l = i + 1
         r = len(nums) - 1
-        breakpoint()
+
         while l < r:
             threeSum = a + nums[l] + nums[r]
 
