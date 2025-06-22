@@ -1,0 +1,2 @@
+def lengthOfLongestSubstring(str):
+    pass
