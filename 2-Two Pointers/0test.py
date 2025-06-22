@@ -2,14 +2,19 @@ height = [1, 8, 6, 2, 5, 4, 8, 3, 7, 10]
 
 l = 0
 r = len(height) - 1
-area = 0
-while l < r:
-    # find the area
-    maxArea = (r - l) * min(height[l], height[r])
-    area = max(maxArea, area)
+water = 0 
 
-    if height[l] > height[r]:
-        r -= 1
-    else:
+maxleft = height[l]
+maxright = height[r]
+
+while l < r:
+    if maxleft <= maxright: # determine which side is the bottle neck
+        # left side bottle neck
         l += 1
-print(area)
+        maxleft = max(maxleft, height[l])
+        water += maxleft - height[l]
+    else:
+        r -= 1
+        maxright = max(maxright, height[r])    
+        water += maxright - height[r]
+    print(water)
