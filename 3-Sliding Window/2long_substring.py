@@ -1,17 +1,17 @@
 s = "pwwkew"
 
-def lengthOfLongestSubstring(str):
+def lengthOfLongestSubstring(s):
     longestSet = set()
     
     l = 0
     result = 0
     
-    for r in range(len(str)):
+    for r in range(len(s)):
         # if in substring
-        while str[r] in longestSet:
-            longestSet.remove(str[l]) # remove from the left
+        while s[r] in longestSet:
+            longestSet.remove(s[l]) # remove from the left
             l += 1
-        longestSet.add(str[r])
+        longestSet.add(s[r])
         result = max(result,r-l+1)
     return result
 
