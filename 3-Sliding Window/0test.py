@@ -9,7 +9,7 @@ rightMax = height[r]
 water = 0
 
 while l < r:
-    if leftMax < rightMax: # left side is the bottleneck
+    if leftMax < rightMax:  # left side is the bottleneck
         l += 1
         leftMax = max(leftMax, height[l])
         water += leftMax - height[l]
