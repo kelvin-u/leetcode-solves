@@ -1,20 +1,15 @@
-height = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]
+s = "ABABAA"
+k = 2
 
-l = 0
-r = len(height) - 1
+l = 0 
+length = 0 
+charSet = {}
 
-leftMax = height[l]
-rightMax = height[r]
+for r in range(len(s)):
+    charSet[s[r]] = charSet.get(s[r], 0) + 1
 
-water = 0
-
-while l < r:
-    if leftMax < rightMax:  # left side is the bottleneck
+    while (r-l+1) - max(charSet.values()) > k:
+        charSet[s[l]] -= 1
         l += 1
-        leftMax = max(leftMax, height[l])
-        water += leftMax - height[l]
-    else:
-        r -= 1
-        rightMax = max(rightMax, height[r])
-        water += rightMax - height[r]
-print(water)
+
+    length = max(length, r - l + 1)

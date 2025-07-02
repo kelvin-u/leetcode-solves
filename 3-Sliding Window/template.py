@@ -17,7 +17,7 @@ def longest_window(s, condition):
             # Shrink the window from the left
             # Remove nums[l] from the current window logic
             s[l] -= 1
-            l += 1
+            l += 1 # it's shrink (remove l from hashmap, list, etc) then move left pointer
 
         # Update the result if the current window is larger
         max_length = max(max_length, l - r + 1)
