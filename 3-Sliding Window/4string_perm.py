@@ -1,26 +1,28 @@
-def checkInclusion(s1: str, s2:str) -> bool:
-    n1 = len(s1)
-    n2 = len(s2)
-
-    if n1 > n2:
+def checkInclusion(s1: str, s2: str) -> bool:
+    if len(s1) > len(s2):
         return False
 
-    s1_counts = [0] * 26
-    s2_counts = [0] * 26
+    s1_count = {}
+    s2_count = {}
 
-    # Initialize frequency arrays for the first n1 characters
-    for i in range(n1):
-        s1_counts[ord(s1[i]) - ord('a')] += 1
-        s2_counts[ord(s2[i]) - ord('a')] += 1
+    for i in range(len(s1)):
+        s1_count[s1[i]] = s1_count.get(s1[i], 0) + 1
+        s2_count[s2[i]] = s2_count.get(s2[i], 0) + 1
 
-    if s1_counts == s2_counts:
+    if s1_count == s2_count:
         return True
 
-    # Slide the window over s2
-    for i in range(n1, n2):
-        s2_counts[ord(s2[i]) - ord('a')] += 1
-        s2_counts[ord(s2[i - n1]) - ord('a')] -= 1
-        if s1_counts == s2_counts:
+    left = 0
+    for right in range(len(s1), len(s2)):
+        s2_count[s2[right]] = 1 + s2_count.get(s2[right], 0)
+        s2_count[s2[left]] -= 1
+
+        if s2_count[s2[left]] == 0:
+            del s2_count[s2[left]]
+
+        left += 1
+
+        if s1_count == s2_count:
             return True
 
     return False
