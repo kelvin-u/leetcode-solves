@@ -1,35 +1,31 @@
 s1 = "ab"
 s2 = "eidbaooo"
 
-# two hashmaps and check if they are equal
+# two hashmaps and if they are equal we good
 
-s1_charSet = {}
-s2_charSet = {}
+s1_charMap = {}
+s2_charMap = {}
 
-# hash map of s1 and s2
+# build hashmap for the length in s1
 for i in range(len(s1)):
-    s1_charSet[s1[i]] = s1_charSet.get(s1[i], 0) + 1
-    s2_charSet[s2[i]] = s2_charSet.get(s2[i], 0) + 1
-    
-# check if they are equal before sliding the window
-if s1_charSet == s2_charSet:
-    print('true')
+    s1_charMap[s1[i]] = s1_charMap.get(s1[i], 0) + 1
+    s2_charMap[s2[i]] = s2_charMap.get(s2[i], 0) + 1
 
-# sliding window through s2 to check if s1 exists in s2
-l = 0 
- 
+l = 0
+
+if s1_charMap == s2_charMap:
+    print('done1')
+
 for r in range(len(s1), len(s2)):
-    s2_charSet[s2[r]] = s2_charSet.get(s2[r], 0) + 1
-    s2_charSet[s2[l]] -= 1
-    
-    print(s2_charSet)
-    if s2_charSet[s2[l]] == 0:
-        del s2_charSet[s2[l]]
-    l += 1
-    
-    if s1_charSet == s2_charSet:
-        print('true')
+    s2_charMap[s2[r]] = s2_charMap.get(s2[r], 0) + 1
+    s2_charMap[s2[l]] -= 1
 
-    
+    if s2_charMap[s2[l]] == 0:
+        del s2_charMap[s2[l]]
+    l += 1
+
+    if s1_charMap == s2_charMap:
+        print('done1')
+print('not done')
 
 
