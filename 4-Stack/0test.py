@@ -1,7 +1,11 @@
-a = 5
-b = 2
+temperatures = [73, 74, 75, 71, 69, 72, 76, 73]
 
-c = -5
-d = 2
+result = [0] * len(temperatures)
+stack = []
 
-print(-1//3)
+for i, temp in enumerate(temperatures):
+    while stack and temperatures[stack[-1]] < temp:
+        index = stack.pop()
+        result[index] = i - index
+
+    stack.append(i)
