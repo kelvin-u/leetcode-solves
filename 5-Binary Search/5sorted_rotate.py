@@ -28,4 +28,4 @@ def search(nums, target):
     return -1
 
 
-search(nums, target)
+search(numsL, target)
