@@ -1,8 +1,4 @@
 def findMedianSortedArrays(nums1, nums2):
-    nums1 = [1, 2, 3]
-    nums2 = [1, 2, 3, 4]
-
-
     a = nums1
     b = nums2
 
@@ -22,21 +18,26 @@ def findMedianSortedArrays(nums1, nums2):
 
         # edge case for empty array
         a_left = a[partition_a] if partition_a >= 0 else float('-inf')
-        a_right = a[partition_a + 1] if (partition_a + 1) < len(a) else float('-inf') # at least two elements
+        a_right = a[partition_a + 1] if (partition_a + 1) < len(a) else float('inf') # at least two elements
 
         b_left = b[partition_b] if partition_b >= 0 else float('-inf')
-        b_right = b[partition_b + 1] if (partition_b + 1) < len(b) else float('-inf') # at least two elements
+        b_right = b[partition_b + 1] if (partition_b + 1) < len(b) else float('inf') # at least two elements
 
         # print(a_left, b_left)
         # check if correct partition
         if a_left <= b_right and b_left <= a_right:
             # check if even
             if total_nums % 2 == 0: 
-                output = (max(a_left, b_left) + min(a_right, b_right)) // 2
+                return ((max(a_left, b_left) + min(a_right, b_right)) / 2)
             # odd
             else:
-                output = min(a_right, b_right) # for odd 1 (1, 2) | (3, 2) 3 4 min is 2
+                return min(a_right, b_right) # for odd 1 (1, 2) | (3, 2) 3 4 min is 2
         elif a_left > b_right:
-            r = partition_a - l
+            r = partition_a - 1
         else: # b_left > a_right
             l = partition_a + 1
+            
+nums1 = [1, 2]
+nums2 = [3, 4]
+            
+print(findMedianSortedArrays(nums1,nums2))
