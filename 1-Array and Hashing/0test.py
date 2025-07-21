@@ -1,13 +1,18 @@
-strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
-output = [["bat"], ["nat", "tan"], ["ate", "eat", "tea"]]
+import sys
 
-# we can sort each word and create a hash map
+nums = [100, 4, 200, 1, 3, 2]
+output = 4
 
-word_map = {}
-for word in strs:
-    sorted_word = "".join(sorted(word))
-    if sorted_word not in word_map:
-        word_map[sorted_word] = []
-    word_map[sorted_word].append(word)
+# 
 
-print(word_map)
+nums_set = set(nums)
+
+longest = 0
+for n in nums_set:
+    if n - 1 not in nums_set:
+        length = 0
+        while n in nums_set:
+            n += 1
+            length += 1
+        longest = max(longest, length)
+print(longest)
