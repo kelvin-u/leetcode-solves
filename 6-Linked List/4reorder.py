@@ -29,15 +29,16 @@ arr = [1, 2, 3, 4]
 
 
 def reorderList(head):
-    # find the mid point 
+    # find the mid point
 
     slow = head
     fast = head
 
-    while fast and fast.next:
+    # finding the middle [1,2,3,4] -> cleanly splits [1 2] [3 4] if we only did while fast and fast.next splits into [1 2 3] [4]
+    while fast.next and fast.next.next:
         slow = slow.next
         fast = fast.next.next
-    
+
     current = slow.next
     previous = None
 
@@ -59,11 +60,8 @@ def reorderList(head):
         head1.next = head2
         head2.next = tmp1
 
-        head1.next = tmp1
-        head2.next = tmp2
-    
+        head1 = tmp1
+        head2 = tmp2
 
 
 arr_to_list(arr)
-
-

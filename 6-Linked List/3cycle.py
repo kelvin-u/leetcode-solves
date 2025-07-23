@@ -20,31 +20,27 @@ def list_to_ll(arr):
         start.next = ListNode(n)
         start = start.next
     print_ll(dummy.next)
+    return dummy.next
 
 
-node1 = ListNode(1)
-node2 = ListNode(2)
-node3 = ListNode(3)
+arr = [1, 2, 3, 4, 5, 6]
 
-
-
-arr = [3, 2, 0, -4]
-
-
-
-node1.next = node2
-node2.next = node3
-node3.next = node1
-head = node1
+head = list_to_ll(arr)
 
 
 def hasCycle(head):
     slow = head
     fast = head
 
+    count = 0
+    
+    # while current and next node arent none
     while fast and fast.next:
         slow = slow.next
         fast = fast.next.next
+
+        count += 1
+        print(count)
         if slow == fast:
             return True
     return False
