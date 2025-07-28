@@ -36,3 +36,5 @@ map = {}
 while current:
     map[current] = ListNode(current.val)
     current = current.next
+
+# 2nd pass is linking
