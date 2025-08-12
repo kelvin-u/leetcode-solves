@@ -1,4 +1,4 @@
-strs = ["idiot", "love", "you"]
+strs = ["i", "love", "you"]
 output = ["i", "love", "you"]
 
 
