@@ -15,28 +15,37 @@ node2 = TreeNode(2, node4, node5)
 root = TreeNode(1, node2, node3)
 
 
-def rightSide(root):
+def dfs(root):
     if not root:
-        return []
+        return root
+    print(root.val)
+    dfs(root.left)
+    dfs(root.right)
 
+
+def bfs(root):
+    if not root:
+        return
     q = deque()
     q.append(root)
-    output = []
 
     while q:
+        node = q.popleft()
+        print(node.val, end=" ")
+
+        if node.left:
+            q.append(node.left)
+        if node.right:
+            q.append(node.right)
+
         q_len = len(q)
-        num = q[-1]
-        output.append(num.val)
-
-        # adding nodes
-        for _ in range(q_len):
+        """for i in range(q_len): level traversal
             node = q.popleft()
-
+            print(node.val)
             if node.left:
                 q.append(node.left)
             if node.right:
-                q.append(node.right)
-    return output
+                q.append(node.right)"""
 
 
-print(rightSide(root))
+print(bfs(root))
