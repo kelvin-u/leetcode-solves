@@ -9,25 +9,33 @@ class TreeNode:
 
 
 class Solution:
-    def levelOrder(root):
+    def rightSideView(self, root):
         if not root:
             return []
 
-        output = []
         q = deque()
         q.append(root)
+        output = []
 
         while q:
-            level_values = []
-            q_len = len(q)
+            q_length = len(q)
+            right_num = q[-1]
+            output.append(right_num.val)
 
-            for _ in range(q_len):
+            for _ in range(q_length):
                 node = q.popleft()
-                level_values.append(node.val)
-
                 if node.left:
                     q.append(node.left)
                 if node.right:
                     q.append(node.right)
-            output.append(level_values)
         return output
+
+
+node5 = TreeNode(5)
+node4 = TreeNode(4)
+node3 = TreeNode(3, None, node4)
+node2 = TreeNode(2, None, node5)
+root = TreeNode(1, node2, node3)
+
+sol = Solution()
+print(sol.rightSideView(root))

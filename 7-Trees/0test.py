@@ -1,3 +1,6 @@
+from collections import deque
+
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
@@ -12,25 +15,28 @@ node2 = TreeNode(2, node4, node5)
 root = TreeNode(1, node2, node3)
 
 
-# root = []
-def diameter(root):
-    diameter = 0
+def rightSide(root):
+    if not root:
+        return []
 
-    def depth(root):
-        nonlocal diameter
-        if not root:
-            return 0
-        left = depth(root.left)
+    q = deque()
+    q.append(root)
+    output = []
 
-        right = depth(root.right)
-        print(f"Node {root.val}: left depth = {left}, right depth = {right}")
+    while q:
+        q_len = len(q)
+        num = q[-1]
+        output.append(num.val)
 
-        diameter = max(diameter, left + right)
+        # adding nodes
+        for _ in range(q_len):
+            node = q.popleft()
 
-        return 1 + max(left, right)
+            if node.left:
+                q.append(node.left)
+            if node.right:
+                q.append(node.right)
+    return output
 
-    depth(root)
-    return diameter
 
-
-print
+print(rightSide(root))
