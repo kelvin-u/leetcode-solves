@@ -11,3 +11,20 @@ def validBST(root):
 
     return dfs(root, float("-inf"), float("inf"))
 
+def kSmall(root, k):
+    # output = []
+    count = 0
+    result = None
+    # in order dfs
+    def dfs(node):
+        if not node or result:
+            return node
+        dfs(node.left)
+        count += 1
+        if count == k:
+            result = node.val
+            return 
+        dfs(node.right)
+    dfs(root)
+    return result
+        

@@ -10,8 +10,10 @@ class Solution:
         def dfs(node, low, high):
             if not node:
                 return True
-
+            
+            print(node.val)
             if not (low < node.val < high):
+                print(node.val)
                 return False
 
             return dfs(node.left, low, node.val) and dfs(node.right, node.val, high)
@@ -22,8 +24,8 @@ class Solution:
 root = TreeNode(5)
 root.left = TreeNode(1)
 root.right = TreeNode(7)
-root.left.left = TreeNode(6)
-root.left.right = TreeNode(8)
+root.right.left = TreeNode(6)
+root.right.right = TreeNode(8)
 
 sol = Solution()
 print(sol.isValidBST(root))
